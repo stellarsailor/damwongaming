@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
-import { Row, Col, Visible, Hidden } from 'react-grid-system';
+import React, { useState } from 'react'
+import { Row, Col } from 'react-grid-system';
 import { dadJokes } from '../datas/dadJokes'
 import styled from 'styled-components'
+import pickRandomElements from '../logics/pickRandomElements';
 
 const TextBox = styled.div`
     width: 100%;
@@ -14,13 +15,17 @@ const TextBox = styled.div`
     overflow: hidden;
 `
 
-export default function DadJokeBoxes(props) {
+export default function DadJokes(props) {
+
+    const { forMain } = props
+
+    const [ arrayToRender, setArrayToRender ] = useState(forMain ? pickRandomElements(dadJokes, 6) : dadJokes)
 
     return (
         <Row nogutter>
-            {dadJokes.map( (v, index) => {
+            {arrayToRender.map( (v, index) => {
                     return(
-                        <Col sm={12} md={6} lg={6} xl={6} style={{padding: 8}}>
+                        <Col sm={12} md={6} lg={6} xl={6} style={{padding: 8, display: 'flex', justifyContent: 'center'}} key={index}>
                             <TextBox>
                                 <div style={{padding: '8px 16px 24px 16px'}}>
                                     <div style={{fontWeight: 'bold', fontSize: '1.2rem'}}>

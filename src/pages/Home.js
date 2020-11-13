@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { Row, Col, Visible, Hidden } from 'react-grid-system';
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade';
-import TextBoxes from '../TextBoxes.js';
-import FanArts from '../FanArts';
-import Articles from '../Articles';
-import Highlights from '../Highlights';
-import MainTextBoxes from '../MainTextBoxes';
-import DadJokeBoxes from '../DadJokeBoxes.js';
+import TextBoxes from '../components/TextBox.js';
+import FanArts from '../components/FanArts';
+import Articles from '../components/Articles';
+import Highlights from '../components/Highlights';
+import MainTextBoxes from '../components/MainTextBox';
+import DadJokeBoxes from '../components/DadJokes.js';
 var Scroll   = require('react-scroll');
 var Element  = Scroll.Element;
 var scroller = Scroll.scroller;
@@ -26,11 +26,12 @@ const TabTitle = styled.div`
 `
 
 const TabViewMore = styled.span`
-    font-size: 1.4rem;
+    color: white;
+    font-size: 1.2rem;
     font-weight: 100;
-    margin-left: 1rem;
+    margin-left: 6px;
     @media (max-width: 768px) {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 `
 
@@ -52,71 +53,85 @@ export default function Home() {
     },[])
 
     const handleScroll = useCallback(() => {
-        let arr = ['sc1', 'sc2', 'sc3', 'sc4', 'sc5']
+        let arr = ['sc1', 'sc2', 'sc3', 'sc4', 'sc5', 'sc0']
         scroller.scrollTo( arr[scrollTargetNumber], {
             duration: 1200,
             delay: 100,
             smooth: true,
             offset: -50, 
         })
-        setScrollTargetNumber(scrollTargetNumber + 1)
+        if(scrollTargetNumber === 5) setScrollTargetNumber(0)
+        else setScrollTargetNumber(scrollTargetNumber + 1)
     },[scrollTargetNumber])
  
     return(
         <Row nogutter justify="center" style={{marginTop: 60}}>
+            <Element name="sc0" />
             <DownArrow onClick={() => handleScroll()}>
                 <img src="/images/icon_down.png" style={{width: 50, height: 50}} />
             </DownArrow>
             <Col sm={12} >
                 <Fade bottom distance="100px">
                     <div style={{width: '100%', minHeight: window.innerWidth * 9/16 }}>
-                        <img src="/images/maskedMain.jpg" style={{width: '100%', height: '100%', alignSelf: 'start'}} />
+                        <img src="/images/maskedMain.png" style={{width: '100%', height: '100%', alignSelf: 'start'}} />
                     </div>
                 </Fade>
             </Col>
             <Col sm={12} md={8} >
                 <Element name="sc1" />
                 <Fade bottom distance="100px">
-                    <TabTitle>
-                        To. DWG <Link to="/message" style={{ textDecoration: 'none' }}><TabViewMore>전체보기</TabViewMore></Link>
-                    </TabTitle>
+                    <Link to="/message" style={{ textDecoration: 'none' }}>
+                        <TabTitle>
+                            To. DWG <TabViewMore>더 보기</TabViewMore>
+                        </TabTitle>
+                    </Link>
                     <MainTextBoxes />
                 </Fade>
             </Col>
             <Col sm={12} md={8} >
                 <Element name="sc2" />
                 <Fade bottom distance="100px">
-                    <TabTitle>
-                        Fan Art <Link to="/" style={{ textDecoration: 'none' }}><TabViewMore>전체보기</TabViewMore></Link>
-                    </TabTitle>
+                    <Link to="/fanart" style={{ textDecoration: 'none' }}>
+                        <TabTitle>
+                            <TabTitle>
+                                Fan Art <TabViewMore>더 보기</TabViewMore>
+                            </TabTitle>
+                        </TabTitle>
+                    </Link>
                     <FanArts />
                 </Fade>
             </Col>
             <Col sm={12} md={8} >
                 <Element name="sc3" />
                 <Fade bottom distance="100px">
-                    <TabTitle>
-                        Dad Jokes <Link to="/" style={{ textDecoration: 'none' }}><TabViewMore>전체보기</TabViewMore></Link>
-                    </TabTitle>
-                    <DadJokeBoxes />
+                    <Link to="/dadjoke" style={{ textDecoration: 'none' }}>
+                        <TabTitle>
+                            Dad Joke <TabViewMore>더 보기</TabViewMore>
+                        </TabTitle>
+                    </Link>
+                    <DadJokeBoxes forMain />
                 </Fade>
             </Col>
             <Col sm={12} md={8} >
                 <Element name="sc4" />
                 <Fade bottom distance="100px">
-                    <TabTitle>
-                        Articles <Link to="/" style={{ textDecoration: 'none' }}><TabViewMore>전체보기</TabViewMore></Link>
-                    </TabTitle>
-                    <Articles />
+                    <Link to="/article" style={{ textDecoration: 'none' }}>
+                        <TabTitle>
+                            Article <TabViewMore>더 보기</TabViewMore>
+                        </TabTitle>
+                    </Link>
+                    <Articles forMain />
                 </Fade>
             </Col>
             <Col sm={12} md={8} >
                 <Element name="sc5" />
                 <Fade bottom distance="100px">
-                    <TabTitle>
-                        Worlds Highlights <Link to="/" style={{ textDecoration: 'none' }}><TabViewMore>전체보기</TabViewMore></Link>
-                    </TabTitle>
-                    <Highlights />
+                    <Link to="/highlight" style={{ textDecoration: 'none' }}>
+                        <TabTitle>
+                            Worlds Highlights  <TabViewMore>더 보기</TabViewMore>
+                        </TabTitle>
+                    </Link>
+                    <Highlights forMain />
                 </Fade>
             </Col>
         </Row>

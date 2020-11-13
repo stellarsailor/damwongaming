@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Row, Col, Visible, Hidden } from 'react-grid-system';
 import { messages } from '../datas/messages'
 import styled from 'styled-components'
+import shuffleArray from '../logics/shuffleArray';
+import pickRandomElements from '../logics/pickRandomElements'
+import truncateLongString from '../logics/truncateLongString';
 
 const TextBox = styled.div`
     width: 100%;
@@ -22,16 +25,22 @@ const NumberCount = styled.div`
     color: rgba(255, 255, 255, 0.5);
 `
 
-export default function MainTextBoxes(props) {
+export default function MainTextBox(props) {
+
+    const [ mainRandomMessage, setMainRandomMessage ] = useState([])
+
+    useEffect(() => {
+        setMainRandomMessage(pickRandomElements(messages, 8))
+    },[])
 
     return (
         <Row nogutter>
-            {messages.slice(0, 8).map( (v, index) => {
+            {mainRandomMessage.map( (v, index) => {
                     return(
-                        <Col sm={12} md={6} lg={6} xl={3} style={{padding: 8}}>
+                        <Col sm={12} md={6} lg={6} xl={3} style={{padding: 8}} key={index}>
                             <TextBox>
                                 <div style={{padding: 24}}>
-                                    {v} 
+                                    {truncateLongString(v, 100)} 
                                 </div>
                             </TextBox>
                         </Col>

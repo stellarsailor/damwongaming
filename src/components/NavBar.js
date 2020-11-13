@@ -11,6 +11,7 @@ const NavigationPane = styled.div`
     width: 100%;
     height: 60px;
     position: fixed;
+    top: 0;
     z-index: 10;
     display: flex;
     justify-content: center;
@@ -22,6 +23,7 @@ const MobileTab = styled.div`
     height: 60px;
     background-color: rgba(0, 0, 0, 1);
     position: fixed;
+    top: 0;
     z-index: 10;
     display: flex;
     justify-content: space-between;
@@ -30,7 +32,7 @@ const MobileTab = styled.div`
 
 const MobileOpenedPane = styled.div`
     width: 100%;
-    background-color: rgba(10, 10, 10, 1);
+    background-color: rgba(25, 25, 25, 1);
     position: fixed;
     top: 60px;
     z-index: 10;
@@ -108,7 +110,7 @@ export default function NavBar(props) {
                             </Link>
                             <Link to="/highlight" style={{ textDecoration: 'none' }}>
                                 <MobileTabLine onClick={() => setViewMobilePane(false)}>
-                                    Worlds Highlights
+                                    Highlights
                                 </MobileTabLine>
                             </Link>
                         </MobileOpenedPane>
@@ -117,12 +119,12 @@ export default function NavBar(props) {
             </Visible>
             <Visible md lg xl xxl>
                 <NavigationPane>
-                    <Link to="/" style={{ textDecoration: 'none' }}> <EachButton>Main</EachButton> </Link>
+                    <Link to="/" style={{ textDecoration: 'none' }}> <EachButton><img src="/images/dwgLogoWhite.png" style={{width: 60}} /></EachButton> </Link>
                     <Link to="/message" style={{ textDecoration: 'none' }}><EachButton >To. DWG</EachButton></Link>
                     <Link to="/fanart" style={{ textDecoration: 'none' }}><EachButton >Fan Arts</EachButton></Link>
                     <Link to="/dadjoke" style={{ textDecoration: 'none' }}><EachButton >Dad Joke</EachButton></Link>
                     <Link to="/article" style={{ textDecoration: 'none' }}><EachButton >Articles</EachButton></Link>
-                    <Link to="/highlight" style={{ textDecoration: 'none' }}><EachButton >Worlds Highlights</EachButton></Link>
+                    <Link to="/highlight" style={{ textDecoration: 'none' }}><EachButton >Highlights</EachButton></Link>
                 </NavigationPane>
             </Visible>
         </Row>

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { Row, Col, Visible, Hidden } from 'react-grid-system';
-import FanArts from '../FanArts.js';
+import TextBoxes from '../components/TextBox.js';
 import styled from 'styled-components'
-import { dadJokes } from '../../datas/dadJokes';
+import { messages, secretMessages } from '../datas/messages';
 import Fade from 'react-reveal/Fade';
+import BackTop from '../components/BackTop.js';
 
 const TabTitle = styled.div`
     font-size: 3rem;
@@ -17,7 +18,9 @@ const TabTitle = styled.div`
     }
 `
 
-export default function DadJoke() {
+export default function Message(props) {
+
+    const { championCode } = props 
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -26,12 +29,11 @@ export default function DadJoke() {
     return(
         <Row nogutter justify="center" style={{marginTop: 60}}>
             <Col sm={12} md={8} >
-                <Fade bottom distance="100px">
-                    <TabTitle>
-                        Fan Arts <span style={{color: 'white', fontSize: 16}}>(총 {dadJokes.length}개의 팬아트)</span>
-                    </TabTitle>
-                    <FanArts />
-                </Fade>
+                <TabTitle>
+                    To. DWG <span style={{color: 'white', fontSize: 16}}>(총 {messages.length} {championCode === 1 ? `+ ${secretMessages.length}` : '' }개의 메세지)</span>
+                </TabTitle>
+                <TextBoxes arrayToRender={messages} />
+                { championCode === 1 && <TextBoxes arrayToRender={secretMessages} secret />}
             </Col>
         </Row>
     )

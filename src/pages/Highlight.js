@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { Row, Col, Visible, Hidden } from 'react-grid-system';
-import TextBoxes from '../TextBoxes.js';
+import DadJokeBoxes from '../components/DadJokes.js';
 import styled from 'styled-components'
-import { messages } from '../../datas/messages';
+import { dadJokes } from '../datas/dadJokes';
 import Fade from 'react-reveal/Fade';
+import Highlights from '../components/Highlights.js';
 
 const TabTitle = styled.div`
     font-size: 3rem;
@@ -17,25 +18,19 @@ const TabTitle = styled.div`
     }
 `
 
-export default function Message(props) {
-
-    const { championCode } = props 
+export default function Highlight() {
 
     useEffect(() => {
-        console.log(championCode)
         window.scrollTo(0, 0)
     },[])
 
     return(
         <Row nogutter justify="center" style={{marginTop: 60}}>
             <Col sm={12} md={8} >
-                <Fade bottom distance="100px">
-                    <TabTitle>
-                        To. DWG <span style={{color: 'white', fontSize: 16}}>(총 {messages.length}개의 메세지)</span>
-                    </TabTitle>
-                    <TextBoxes spread={true} counter={true} />
-                    {championCode ? 1 : null}
-                </Fade>
+                <TabTitle>
+                    Worlds Highlight
+                </TabTitle>
+                <Highlights />
             </Col>
         </Row>
     )

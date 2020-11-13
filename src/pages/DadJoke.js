@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { Row, Col, Visible, Hidden } from 'react-grid-system';
-import DadJokeBoxes from '../DadJokeBoxes.js';
+import DadJokeBoxes from '../components/DadJokes.js';
 import styled from 'styled-components'
-import { dadJokes } from '../../datas/dadJokes';
+import { dadJokes } from '../datas/dadJokes';
 import Fade from 'react-reveal/Fade';
 
 const TabTitle = styled.div`
@@ -26,12 +26,10 @@ export default function DadJoke() {
     return(
         <Row nogutter justify="center" style={{marginTop: 60}}>
             <Col sm={12} md={8} >
-                <Fade bottom distance="100px">
-                    <TabTitle>
-                        Dad Jokes <span style={{color: 'white', fontSize: 16}}>(총 {dadJokes.length}개의 아재개그)</span>
-                    </TabTitle>
-                    <DadJokeBoxes />
-                </Fade>
+                <TabTitle>
+                    Dad Jokes <span style={{color: 'white', fontSize: 16}}>(총 {dadJokes.length}개의 아재개그)</span>
+                </TabTitle>
+                <DadJokeBoxes />
             </Col>
         </Row>
     )

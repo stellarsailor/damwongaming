@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
 import { Row, Col, Visible, Hidden } from 'react-grid-system';
-import DadJokeBoxes from '../DadJokeBoxes.js';
+import DadJokeBoxes from '../components/DadJokes.js';
 import styled from 'styled-components'
-import { dadJokes } from '../../datas/dadJokes';
+import { dadJokes } from '../datas/dadJokes';
 import Fade from 'react-reveal/Fade';
+import Articles from '../components/Articles.js';
 
 const TabTitle = styled.div`
     font-size: 3rem;
@@ -17,7 +18,7 @@ const TabTitle = styled.div`
     }
 `
 
-export default function Highlight() {
+export default function Article() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -26,11 +27,10 @@ export default function Highlight() {
     return(
         <Row nogutter justify="center" style={{marginTop: 60}}>
             <Col sm={12} md={8} >
-                <Fade bottom distance="100px">
-                    <TabTitle>
-                        Highlight <span style={{color: 'white', fontSize: 16}}>(총 {dadJokes.length}개의 아재개그)</span>
-                    </TabTitle>
-                </Fade>
+                <TabTitle>
+                    Article
+                </TabTitle>
+                <Articles />
             </Col>
         </Row>
     )
