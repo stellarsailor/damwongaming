@@ -32,7 +32,7 @@ function App(props) {
   useEffect(() => {
     const parsed = qs.parse(window.location.search);
     if(parsed.champion === '201031dwg'){
-      // ?c=201031dwg
+      // ?champion=201031dwg
       setChampionCode(1);
       console.log('champion')
     } else {
@@ -42,7 +42,7 @@ function App(props) {
 
     setTimeout(() => {
       setLoadingIntro(false);
-    }, 2000);
+    }, 2500);
   },[])
 
   return (

@@ -17,6 +17,11 @@ const TabTitle = styled.div`
     }
 `
 
+const NumberingText = styled.span`
+    color: white;
+    font-size: 16px;
+`
+
 export default function DadJoke() {
 
     useEffect(() => {
@@ -27,7 +32,7 @@ export default function DadJoke() {
         <Row nogutter justify="center" style={{marginTop: 60}}>
             <Col sm={12} md={8} >
                 <TabTitle>
-                    Dad Jokes <span style={{color: 'white', fontSize: 16}}>(총 {dadJokes.length}개의 아재개그)</span>
+                    Dad Jokes <NumberingText>(총 {dadJokes.length}개의 아재개그)</NumberingText>
                 </TabTitle>
                 <DadJokeBoxes />
             </Col>

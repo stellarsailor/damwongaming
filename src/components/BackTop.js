@@ -38,7 +38,7 @@ export default function BackTop() {
         }
     }, [])
 
-    const go = () => scroller.scrollTo('top', {
+    const goToTop = () => scroller.scrollTo('top', {
         duration: 1200,
         delay: 100,
         smooth: true,
@@ -47,7 +47,7 @@ export default function BackTop() {
 
     if(scrollPosition > 250){
         return (
-            <GoToTopButton onClick={() => go()}>
+            <GoToTopButton onClick={() => goToTop()}>
                 <img src="/images/icon_top.png" style={{width: 30, height: 30}} />
             </GoToTopButton>
         )

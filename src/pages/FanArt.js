@@ -17,6 +17,11 @@ const TabTitle = styled.div`
     }
 `
 
+const NumberingText = styled.span`
+    color: white;
+    font-size: 16px;
+`
+
 export default function DadJoke(props) {
 
     const { championCode } = props 
@@ -29,10 +34,10 @@ export default function DadJoke(props) {
         <Row nogutter justify="center" style={{marginTop: 60,}}>
             <Col sm={12} md={8}>
                 <TabTitle>
-                    Fan Arts <span style={{color: 'white', fontSize: 16}}>(총 {fanArtImages.length}개의 팬아트 
-                    { championCode === 1 ? <a href="https://imgur.com/6hKc5wK" target="_blank" style={{color: 'dodgerblue'}}> + 비공개 1개</a> : ''})</span>
+                    Fan Arts <NumberingText>(총 {fanArtImages.length}개의 팬아트 
+                    { championCode === 1 ? <a href="https://imgur.com/6hKc5wK" target="_blank" style={{color: 'dodgerblue'}}> + 비공개 1개</a> : ''})</NumberingText>
                 </TabTitle>
-                <div style={{height: 400, zIndex: 20}}>
+                <div style={{zIndex: 20}}>
                     <FanArts championCode={championCode} />
                 </div>
             </Col>

@@ -18,6 +18,11 @@ const TabTitle = styled.div`
     }
 `
 
+const NumberingText = styled.span`
+    color: white;
+    font-size: 16px;
+`
+
 export default function Message(props) {
 
     const { championCode } = props 
@@ -30,7 +35,7 @@ export default function Message(props) {
         <Row nogutter justify="center" style={{marginTop: 60}}>
             <Col sm={12} md={8} >
                 <TabTitle>
-                    To. DWG <span style={{color: 'white', fontSize: 16}}>(총 {messages.length} {championCode === 1 ? `+ ${secretMessages.length}` : '' }개의 메세지)</span>
+                    To. DWG <NumberingText>(총 {messages.length} {championCode === 1 ? `+ ${secretMessages.length}` : '' }개의 메세지)</NumberingText>
                 </TabTitle>
                 <TextBoxes arrayToRender={messages} />
                 { championCode === 1 && <TextBoxes arrayToRender={secretMessages} secret />}
