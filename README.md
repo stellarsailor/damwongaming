@@ -1,3 +1,5 @@
+![Imgur](https://i.imgur.com/AshNLSI.png)
+
 ## LoL 2020 Worlds Champion Damwon Gaming
 
 To celebrate the winner of LoL 2020 Worlds,
